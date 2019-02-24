@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1>{{category.name}}</h1>
+        <a href="{{url_for('newItem', categoryName=category.name)}}">New Item</a>
+    <ul class="list-group mb-5 borderless">
+        {% for item in items %}
+            <a href="{{url_for('showItem', categoryName=category.name, itemName=item.name)}}" class="list-group-item borderless">
+                {{item.name}}
+            </a>
+                <a class="btn btn-primary w-25" href="{{url_for('editItem', categoryName=category.name, itemName=item.name)}}">
+                    Edit
+                </a>
+                <a class="btn btn-danger w-25" href="{{url_for('deleteItem', categoryName=category.name, itemName=item.name)}}">
+                    Delete
+                </a>
+        {% endfor %}
+    </ul>
+{% endblock %}

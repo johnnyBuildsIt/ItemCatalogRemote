@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1>Categories</h1>
+        <a class="btn btn-primary" href="{{url_for('newCategory')}}">New Category</a>
+    {% for category in categories %}
+        <h3>
+            <a href="{{url_for('showCategory', categoryName=category.name)}}">{{category.name}}</a>
+        </h3>
+                <a class="btn btn-primary" href="{{url_for('editCategory', categoryName=category.name)}}">Edit</a>
+                <a class="btn btn-danger" href="{{url_for('deleteCategory', categoryName=category.name)}}">Delete</a>
+    {% endfor %}
+{% endblock %}
